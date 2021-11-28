@@ -1,5 +1,5 @@
 import streamlit as st
-
+import clustering as cl
 
 
 
@@ -27,7 +27,8 @@ with col1:
 
 with col2:
     st.header("Column 2")
-    st.image("https://static.streamlit.io/examples/dog.jpg")
+    #st.image("https://static.streamlit.io/examples/dog.jpg")
+    cl.clustering_main()
 
 with col3:
     st.header("Column 3")
