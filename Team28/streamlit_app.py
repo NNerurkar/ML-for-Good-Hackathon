@@ -26,7 +26,7 @@ with col1:
         st.write(dataframe)
 
 with col2:
-    st.header("Column 2")
+    st.header("Generate WordClouds using KMeans Clustering")
     #st.image("https://static.streamlit.io/examples/dog.jpg")
     cl.clustering_main()
 
