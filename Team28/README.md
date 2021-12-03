@@ -18,8 +18,9 @@ Features:
 Run the following command in Anaconda Prompt to deploy the streamlit app on localhost:
 streamlit run streamlit_app.py
 
-![Screenshot](Team28/streamlit_app_home_page.jpg?raw=true "Home Page")
-
+![Alt Text](https://github.com/NNerurkar/ML-for-Good-Hackathon/blob/main/Team28/streamlit_app_home_page.JPG?raw=true "Home Page")
+![Alt Text](https://github.com/NNerurkar/ML-for-Good-Hackathon/blob/main/Team28/streamlit_app_clustering.JPG?raw=true "Clustering")
+![Alt Text](https://github.com/NNerurkar/ML-for-Good-Hackathon/blob/main/Team28/streamlit_app_chatbot.JPG?raw=true "ChatBot")
 
 
 
