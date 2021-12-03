@@ -18,7 +18,7 @@ Features:
 Run the following command in Anaconda Prompt to deploy the streamlit app on localhost:
 streamlit run streamlit_app.py
 
-![Alt text](streamlit_app_home_page.jpg?raw=true "Home Page")
+![Screenshot](streamlit_app_home_page.jpg?raw=true "Home Page")
 
 
 
