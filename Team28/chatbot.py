@@ -28,11 +28,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..', 'Da
 class ChatBot:
     def __init__(self):
         self.conversation = ''
-        self.article_sentences = []
-        self.article_words = []
 
     def chatbot_main(self):
-        #self.train_model()
         chat_area = st.empty()
         user_message = st.text_area('', value="", key=None, on_change=None, args=None )
     
@@ -58,24 +55,26 @@ class ChatBot:
         return self.perform_lemmatization(nltk.word_tokenize(document.lower().translate(punctuation_removal)))
     
 
-    def generate_reply(self, user_input):
 
+    def generate_reply(self, user_input):
         focus_group_data = ''
-        for (root, dirs, files) in os.walk('FocusGroups', topdown=True):
+        for (root, dirs, files) in os.walk('../Data/FocusGroups', topdown=True):
             for file in files:
+                print(file)
                 focus_group_data = focus_group_data + str(textract.process(os.path.join(root, file)))
-                    
-        st.write(focus_group_data)
+
+        print('Focus data: '+focus_group_data)
         article_text = re.sub(r'\[[0-9]*\]', ' ', focus_group_data)
         article_text = re.sub(r'\s+', ' ', focus_group_data)
 
-        self.article_sentences = nltk.sent_tokenize(focus_group_data)
-        self.article_words = nltk.word_tokenize(focus_group_data)
+        article_sentences = nltk.sent_tokenize(focus_group_data)
+        article_words = nltk.word_tokenize(focus_group_data)
 
-        self.article_sentences.append(user_input)
+        user_input = str(user_input)
+        article_sentences.append(user_input)
 
         word_vectorizer = TfidfVectorizer(tokenizer=self.get_processed_text, stop_words='english')
-        all_word_vectors = word_vectorizer.fit_transform(self.article_sentences)
+        all_word_vectors = word_vectorizer.fit_transform(article_sentences)
         similar_vector_values = cosine_similarity(all_word_vectors[-1], all_word_vectors)
         similar_sentence_number = similar_vector_values.argsort()[0][-2]
 
@@ -84,10 +83,18 @@ class ChatBot:
         vector_matched = matched_vector[-2]
 
         if vector_matched == 0:
-            return 'Response not found'
+            return "Error"
+
         else:
             return article_sentences[similar_sentence_number]
-            
+
+
+
+
+
+
+
+
 
 
 
